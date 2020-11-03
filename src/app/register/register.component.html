@@ -1,0 +1,82 @@
+<form [formGroup]="registerForm">
+<mat-horizontal-stepper formArrayName="formArray" [linear]="true" #stepper>
+    <mat-step formGroupName="0" [stepControl]="formArray?.get([0])">
+        <ng-template matStepLabel>Fill out your name</ng-template>
+        <div class="step-element">
+            <h3>Let's start with the basics</h3>
+
+            <p style="margin: 0 auto;">
+                <mat-form-field style="margin: 10px auto; width: 50%" appearance="fill">
+                    <mat-label>Enter your name</mat-label>
+                    <input matInput placeholder="Doe"  formControlName="name" id="name" required>
+                </mat-form-field>
+            </p>
+            <p style="margin: 0 auto;">
+                <mat-form-field style="margin: 10px auto; width: 50%" appearance="fill">
+                    <mat-label>Enter your firstname</mat-label>
+                    <input matInput placeholder="John"  formControlName="firstname" id="firstname" required>
+                </mat-form-field>
+            </p>
+            <p style="margin: 0 auto;">
+                <mat-form-field style="margin: 10px auto; width: 50%" appearance="fill">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="foo@bar.com"  formControlName="email" id="email" required>
+                </mat-form-field>
+            </p>
+            
+            <p style="margin: 0 auto;">
+                <mat-form-field style="margin: 10px auto; width: 50%" appearance="fill">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" id="password" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </p>
+            <div>
+                <button mat-raised-button color="primary" matStepperNext>Next</button>
+            </div>
+        </div>
+    </mat-step>
+    <mat-step formGroupName="1" [stepControl]="formArray?.get([1])">
+        <ng-template matStepLabel>Fill out your address</ng-template>
+        <div class="step-element">
+            <h3>Tell us a bit more about you</h3>
+        <p style="margin: 0 auto;">
+            <mat-form-field style="margin: 10px auto; width: 50%" appearance="fill">
+                <mat-label>Enter your Address</mat-label>
+                <input matInput placeholder="adress"  formControlName="adress" id="adress" required>
+            </mat-form-field>
+        </p>
+        <p style="margin: 0 auto;">
+            <mat-form-field style="margin: 10px auto; width: 50%" appearance="fill">
+                <mat-label>Enter your Nationality</mat-label>
+                <input matInput placeholder="French"  formControlName="nationality" id="nationality" required>
+            </mat-form-field>
+        </p>
+        <p style="margin: 0 auto;">
+            <mat-form-field style="margin: 10px auto; width: 50%" appearance="fill">
+                <mat-label>Enter your Telephone</mat-label>
+                <input matInput type="tel" placeholder="0639642938"  formControlName="telephone" id="telephone" required>
+            </mat-form-field>
+        </p>
+        <p style="margin: 0 auto;">
+            <mat-form-field style="margin: 10px auto; width: 50%" appearance="fill">
+                <mat-label>Enter your BirthDate</mat-label>
+                <input matInput type="date" placeholder="01/01/01"  formControlName="birthDate" id="birthDate" required>
+            </mat-form-field>
+        </p>
+        <div>
+            <button mat-raised-button color="primary" matStepperPrevious style="margin: 0 1rem;">Back</button>
+            <button mat-raised-button color="primary" matStepperNext style="margin: 0 1rem;">Next</button>
+        </div>
+        </div>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>        
+        <div class="step-element">
+            <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Submit</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>
+</form>

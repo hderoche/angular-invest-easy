@@ -1,0 +1,8 @@
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+.navbar-style {
+  display: inline-flex;
+  width: 100%;
+}

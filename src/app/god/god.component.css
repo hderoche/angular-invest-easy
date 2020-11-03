@@ -1,0 +1,13 @@
+table {
+  
+  width: 90%;
+  margin: 50px auto
+}
+h3 {
+  margin: 100px auto;
+  font-weight: bold;
+  text-align: center;
+}
+button {
+  margin: 16px 8px;
+}

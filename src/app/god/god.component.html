@@ -1,0 +1,23 @@
+
+<h3>{{danger}}</h3>
+<div class="god-user-table" *ngIf="displayedDataUser">
+    <table mat-table [dataSource]="displayedDataUser" class="mat-elevation-z8">
+        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumnsUser">
+            <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+            <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplayUser"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplayUser;"></tr>
+    </table>
+</div>
+
+<div class="god-wallet-table" *ngIf="dataWallet">
+    <table mat-table [dataSource]="displayedDataWallet" class="mat-elevation-z8">
+        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumnsWallet">
+            <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+            <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplayWallet"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplayWallet;"></tr>
+    </table>
+</div>

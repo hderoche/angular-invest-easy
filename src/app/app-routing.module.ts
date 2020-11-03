@@ -1,0 +1,26 @@
+import { LandingComponent } from './landing/landing.component';
+import { WalletComponent } from './wallet/wallet.component';
+import { SharesComponent } from './shares/shares.component';
+import { RegisterComponent } from './register/register.component';
+import { SigninComponent } from './signin/signin.component';
+import { GodComponent } from './god/god.component';
+import { ProfileComponent } from './profile/profile.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+const routes: Routes = [
+  { path: 'profile', component: ProfileComponent },
+  { path: 'godmode', component: GodComponent },
+  { path: 'signin', component: SigninComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'shares', component: SharesComponent },
+  { path: 'wallet', component: WalletComponent },
+  { path: '', component: LandingComponent },
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
