@@ -12,14 +12,9 @@ export class NavbarComponent implements OnInit {
 
   @Input() connected: boolean;
 
-  options: FormGroup;
-  colorControl = new FormControl('primary');
 
   // tslint:disable-next-line: variable-name
-  constructor(fb: FormBuilder, private _snackBar: MatSnackBar) {
-    this.options = fb.group({
-      color: this.colorControl
-    });
+  constructor(private _snackBar: MatSnackBar) {
   }
   ngOnInit(): void {
   }

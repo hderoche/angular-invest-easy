@@ -15,7 +15,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import {MatListModule} from '@angular/material/list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +32,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LandingComponent } from './landing/landing.component';
 import { AuthInterceptor } from './auth-interceptor';
+import { LandingCardComponent } from './landing-card/landing-card.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { AuthInterceptor } from './auth-interceptor';
     TagsComponent,
     PageNotFoundComponent,
     LandingComponent,
+    LandingCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,8 @@ import { AuthInterceptor } from './auth-interceptor';
     MatInputModule,
     MatSelectModule,
     MatMenuModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatListModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

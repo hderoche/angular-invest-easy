@@ -44,3 +44,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# My Ignores
+src/assets/infographie1.jpg
+src/assets/infographie2.jpg
+src/assets/LP.jpg

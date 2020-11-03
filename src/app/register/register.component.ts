@@ -69,7 +69,7 @@ async onSubmit(): Promise<void>  {
       console.log({statusCode: res});
       if (res) {
         // Add snackbar to tell the user he has successfully registered
-        this._snackbar.open('Successfully regitered !');
+        this._snackbar.open('Successfully regitered !', null, {duration: 2 * 1000});
       }
 
     });

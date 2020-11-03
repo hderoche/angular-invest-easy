@@ -1,4 +1,4 @@
-<mat-toolbar [color]="colorControl.value">
+<mat-toolbar color="primary">
 <div class="navbar-style" >
     
         <div style="margin: auto 7rem auto 1rem;">
@@ -12,7 +12,7 @@
               <mat-icon>web</mat-icon>
               <span>Home</span>
             </button>
-            <button mat-menu-item routerLink="/shares" routerLinkActive="active">
+            <button mat-menu-item routerLink="/shares">
               <mat-icon>list</mat-icon>
               <span>Shares</span>
             </button>
@@ -35,49 +35,8 @@
         </button>
         
         <span class="example-spacer"></span>
-        
-        <!-- <button mat-icon-button [matMenuTriggerFor]="colorMenu" aria-label="" [formControl]="colorControl">
-          <mat-icon>colorize</mat-icon>
-        </button>
-        
+          
 
-          <form [formGroup]="options" >
-            <mat-form-field appearance="fill" >
-                    <mat-menu #colorMenu="matMenu" [color]="colorControl.value" [formControl]="colorControl">
-                    <mat-option mat-item-menu value="primary">Primary</mat-option>
-                    <mat-option mat-item-menu value="warn">Warn</mat-option>
-                    <mat-option mat-item-menu value="accent">Accent</mat-option> 
-            </mat-form-field>
-        </form>
-      </mat-menu> -->
-
-      <button mat-icon-button [matMenuTriggerFor]="colorMenu" aria-label="">
-        <mat-icon>colorize</mat-icon>
-      </button>
-      <form [formGroup]="options">
-      <mat-menu #colorMenu="matMenu" [formControl]="colorControl">
-        <button mat-menu-item value="warn">
-          <span>Warn</span>
-        </button>
-        <button mat-menu-item value="accent">
-          <span>Accent</span>
-        </button>
-        <button mat-menu-item value="primary">
-          <span>Primary</span>
-        </button>
-      </mat-menu>
-    </form>
-
-        <!-- <form [formGroup]="options">
-            <mat-form-field appearance="fill" [color]="colorControl.value">
-              <mat-label><mat-icon>colorize</mat-icon></mat-label>
-                  <mat-select [formControl]="colorControl">
-                    <mat-option value="primary">Primary</mat-option>
-                    <mat-option value="warn">Warn</mat-option>
-                    <mat-option value="accent">Accent</mat-option> 
-                  </mat-select>
-                </mat-form-field>
-        </form> -->
         <div *ngIf="!connected" style="margin: auto 2rem;">
     
             <button mat-icon-button [matMenuTriggerFor]="accountOut" aria-label="">
