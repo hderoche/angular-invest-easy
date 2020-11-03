@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AccountService } from './../account.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup, Validators, AbstractControl } from '@angular/forms';
@@ -29,7 +30,6 @@ export class RegisterComponent implements OnInit {
     ])
   });
 
-  statusCode: number = null;
 
   detailsForm = this.fb.group({
     name: [''],
@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
   
   
   // tslint:disable-next-line: variable-name
-  constructor(private fb: FormBuilder, private restAccount: AccountService) {}
+  constructor(private fb: FormBuilder, private restAccount: AccountService, private _snackbar: MatSnackBar) {}
   
   ngOnInit(): void {
   }
@@ -64,8 +64,15 @@ async onSubmit(): Promise<void>  {
     }
     this.fullForm = jsonConcat(this.registerForm.value.formArray[0], this.registerForm.value.formArray[1]);
     console.log(this.fullForm);
-    this.statusCode = await this.restAccount.postSignup$({}, {}, this.fullForm);
-    console.log({statusCode: this.statusCode});
+    const statusCode$ = this.restAccount.postSignup$({}, {}, this.fullForm);
+    statusCode$.subscribe(res => {
+      console.log({statusCode: res});
+      if (res) {
+        // Add snackbar to tell the user he has successfully registered
+        this._snackbar.open('Successfully regitered !');
+      }
+
+    });
   }
   catch {
     console.log('Error in the async/await function');

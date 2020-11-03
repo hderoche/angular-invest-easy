@@ -28,9 +28,11 @@ export class NavbarComponent implements OnInit {
   onLogout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('user_id');
-    this._snackBar.openFromComponent(LogoutSnackbarComponent, {
-      duration: 2 * 1000,
+    const message = 'Successfully logged out';
+    this._snackBar.open(message, null, {
+      duration: 2 * 1000
     });
+    this.connected = false;
   }
 
 }

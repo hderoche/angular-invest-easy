@@ -61,7 +61,7 @@ export class AccountService {
         map(res => {
         console.log(res);
         console.log(res.status);
-        return res.status;
+        return res.ok;
       }))
 
   checkToken = (params = {}, headers = {}, body = { user_id: null }) => {
