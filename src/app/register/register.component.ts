@@ -9,8 +9,8 @@ import { FormBuilder, FormArray, FormGroup, Validators, AbstractControl } from '
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  
-  
+
+
   hide = true;
   fullForm: any;
   registerForm = this.fb.group({
@@ -37,21 +37,21 @@ export class RegisterComponent implements OnInit {
     email: [''],
     password: [''],
   });
-  
+
   moreDetailsForm = this.fb.group({
     adress: [''],
     nationality: [''],
     telephone: [''],
     birthDate: ['']
   });
-  
-  
+
+
   // tslint:disable-next-line: variable-name
   constructor(private fb: FormBuilder, private restAccount: AccountService, private _snackbar: MatSnackBar) {}
-  
+
   ngOnInit(): void {
   }
-  
+
   get f(): any { return this.registerForm.controls; }
   /** Returns a FormArray with the name 'formArray'. */
   get formArray(): AbstractControl | null { return this.registerForm.get('formArray'); }

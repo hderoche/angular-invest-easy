@@ -31,7 +31,6 @@ import { TagsComponent } from './tags/tags.component';
 import { MatSelectModule } from '@angular/material/select';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LandingComponent } from './landing/landing.component';
-import { LogoutSnackbarComponent } from './logout-snackbar/logout-snackbar.component';
 import { AuthInterceptor } from './auth-interceptor';
 
 
@@ -48,7 +47,6 @@ import { AuthInterceptor } from './auth-interceptor';
     TagsComponent,
     PageNotFoundComponent,
     LandingComponent,
-    LogoutSnackbarComponent,
   ],
   imports: [
     BrowserModule,

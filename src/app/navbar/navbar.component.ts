@@ -1,4 +1,3 @@
-import { LogoutSnackbarComponent } from './../logout-snackbar/logout-snackbar.component';
 import { Component, Input, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
