@@ -1,6 +1,7 @@
 import { AccountService } from './../account.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -31,7 +32,7 @@ export class SigninComponent implements OnInit {
     }
   }
 
-  constructor(private restAccount: AccountService, private fb: FormBuilder) {}
+  constructor(private restAccount: AccountService, private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
   }
@@ -43,7 +44,14 @@ export class SigninComponent implements OnInit {
       return;
     }
     console.log(this.loginForm.value);
-    this.restAccount.postSignin$({}, {}, this.loginForm.value);
+    const signInStatus$ = this.restAccount.postSignin$({}, {}, this.loginForm.value);
+    signInStatus$.subscribe(signInStatus => {
+
+      console.log('signInStat ' + signInStatus);
+      if (signInStatus) {
+        this.router.navigate(['/']);
+      }
+    });
     this.loginForm.reset();
   }
 
