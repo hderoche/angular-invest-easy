@@ -12,5 +12,5 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getAllShares$ = (params = {}, headers = {}) =>
-  this.http.get<ShareRecord[]>('http://deroche.freeboxos.fr:8500/shares/')
+  this.http.get<ShareRecord[]>('/shares/')
 }
