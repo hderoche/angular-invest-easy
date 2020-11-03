@@ -53,7 +53,13 @@ export class User implements UserRecord {
 
     constructor(input: any = {}) {
         // Prends les attributs de la classe et les map avec les champs du Json correspondant
-        Object.keys(this).forEach(p => this[p] = (input as any)[p]);
+        Object.keys(this).forEach(p => {
+            if (p === 'password') {
+                const pwd: string = (input as any)[p];
+                this[p] = pwd.slice(8, 16);
+            } else {
+                this[p] = (input as any)[p];
+            }});
     }
 }
 
