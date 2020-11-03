@@ -3,11 +3,18 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.sass']
+  styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements OnInit {
 
-  token = localStorage.getItem('token');
+  gridUnits = [
+    ['tetoekotk', 'eirjeivorjvierv', 'oijvreiorjvie'],
+    ['tetoekotk', 'eirjeivorjvierv', 'oijvreiorjvie'],
+    ['tetoekotk', 'eirjeivorjvierv', 'oijvreiorjvie'],
+    ['tetoekotk', 'eirjeivorjvierv', 'oijvreiorjvie'],
+    ['tetoekotk', 'eirjeivorjvierv', 'oijvreiorjvie'],
+    ['tetoekotk', 'eirjeivorjvierv', 'oijvreiorjvie'],
+  ];
 
   constructor() { }
 
