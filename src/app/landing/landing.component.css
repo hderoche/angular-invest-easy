@@ -1,25 +1,48 @@
 .grid-list{
     width: 80%;
-    margin: 10px auto;
+    border-radius: 8px;
+    margin: 0 auto;
 }
 
 .list-elt {
     margin: 2rem;
 }
 
+mat-grid-item {
+    justify-content: flex-start !important;
+    align-items: flex-start !important
+}
+
 .sub-img{
     height: 20%;
     width: 40%;
     margin: 10px 10rem;
+    border-radius: 5px;
 }
 
 .img-right{
     display: inline-flex;
+    margin: 100px auto;
 }
 .img-left{
     display: inline-flex;
+    margin: 100px auto;
 }
 
 .sub-list{
-    width: 300px;
+    width: 30%;
+    border-radius: 10px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+
+.main-img{
+    width: 100%;
+    z-index: -1;
+}
+
+.fg {
+    align-items: center;
+    z-index: 1;
 }

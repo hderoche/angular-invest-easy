@@ -1,3 +1,4 @@
+import { AppComponent } from './../app.component';
 import { AccountService } from './../account.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
@@ -32,7 +33,7 @@ export class SigninComponent implements OnInit {
     }
   }
 
-  constructor(private restAccount: AccountService, private fb: FormBuilder, private router: Router) {}
+  constructor(private restAccount: AccountService, private fb: FormBuilder, private router: Router, private appComp: AppComponent ) {}
 
   ngOnInit(): void {
   }
@@ -50,6 +51,7 @@ export class SigninComponent implements OnInit {
       console.log('signInStat ' + signInStatus);
       if (signInStatus) {
         this.router.navigate(['/']);
+        this.appComp.isLogged();
       }
     });
     this.loginForm.reset();
