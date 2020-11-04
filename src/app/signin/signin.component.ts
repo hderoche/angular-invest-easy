@@ -3,6 +3,7 @@ import { AccountService } from './../account.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signin',
@@ -33,7 +34,7 @@ export class SigninComponent implements OnInit {
     }
   }
 
-  constructor(private restAccount: AccountService, private fb: FormBuilder, private router: Router, private appComp: AppComponent ) {}
+  constructor(private restAccount: AccountService, private fb: FormBuilder, private router: Router, private appComp: AppComponent, private snackbar: MatSnackBar ) {}
 
   ngOnInit(): void {
   }
@@ -52,6 +53,7 @@ export class SigninComponent implements OnInit {
       if (signInStatus) {
         this.router.navigate(['/']);
         this.appComp.isLogged();
+        this.snackbar.open('Successfully logged in!', null, {duration: 2 * 1000});
       }
     });
     this.loginForm.reset();
