@@ -1,0 +1,23 @@
+<div *ngIf="currentShare" style="width: 70%; margin: 50px auto" >
+    <mat-card class="mat-elevation-z8" style="text-align: center;">
+        <mat-card-title>
+            {{currentShare.name}}
+        </mat-card-title>
+        <mat-card-content>
+            <mat-list >
+                <mat-list-item *ngFor="let info of currentShare | keyvalue" >
+                    {{info.key}} : {{info.value}}
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<div>
+    <mat-card class="mat-elevation-z8" style="margin: 4rem auto;width: 80%;text-align: center;">
+        <div [hidden]="!chart" >
+            <canvas id="canvas">{{ chart }}</canvas>
+        </div>
+    </mat-card>
+   
+</div>

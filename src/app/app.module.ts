@@ -33,6 +33,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { LandingComponent } from './landing/landing.component';
 import { AuthInterceptor } from './auth-interceptor';
 import { LandingCardComponent } from './landing-card/landing-card.component';
+import { ShareDetailsComponent } from './share-details/share-details.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { LandingCardComponent } from './landing-card/landing-card.component';
     PageNotFoundComponent,
     LandingComponent,
     LandingCardComponent,
+    ShareDetailsComponent,
   ],
   imports: [
     BrowserModule,
