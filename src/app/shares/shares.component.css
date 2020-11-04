@@ -2,8 +2,12 @@
   
     width: 90%;
     margin: 50px auto 0 auto;
+    cursor: pointer;
   }
 
+tr:hover {
+  background-color: gray;
+}
 p {
     margin: 75px auto 0 auto;
     padding: 0;
