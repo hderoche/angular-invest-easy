@@ -13,4 +13,7 @@ export class ProductService {
 
   getAllShares$ = (params = {}, headers = {}) =>
   this.http.get<ShareRecord[]>('/shares/')
+
+  getOneShare$ = (params = {ticker: null}, headers = {}) =>
+  this.http.get<Share>('/shares/' + params.ticker)
 }

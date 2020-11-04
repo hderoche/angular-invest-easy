@@ -31,8 +31,7 @@ mat-grid-item {
 
 .sub-list{
     width: 30%;
-    border-radius: 10px;
-    text-align: left;
+    align-content: center;
     vertical-align: middle;
 }
 
@@ -43,6 +42,12 @@ mat-grid-item {
 }
 
 .fg {
-    align-items: center;
-    z-index: 1;
+    position: relative;
+
+}
+.btn-landing {
+    margin: 40px auto 0 auto;
+    padding: 1rem 2rem;
+    font-size: x-large;
+    font-weight: 600;
 }

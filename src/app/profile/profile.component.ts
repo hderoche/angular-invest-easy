@@ -1,6 +1,7 @@
 import { AccountService } from './../account.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../account';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',
@@ -9,27 +10,16 @@ import { User } from '../account';
 })
 export class ProfileComponent implements OnInit {
 
-  //@Input() userId: User;
-  user: User = null;
+
+  user: User;
   constructor(private restAccount: AccountService) { }
 
   ngOnInit(): void {
-    // this.restAccount.getUserDetails$({id: this.userId}).subscribe((res) => {
-    //   console.log(res);
-    //   if (res) {
-    //     this.user = res;
-    //   }
-    // });
-    this.user = new User({
-      name: 'deroche',
-      firstname: 'hugo',
-      telephone: '200383949',
-      adress: 'jffoekok',
-      nationality: 'French',
-      birthDate: '01/89/03',
-      password: 'kvnrivnirjvirjijrivjir',
-      email: 'hugo.deroche@gmail.com'
-    });
+    // tslint:disable-next-line: variable-name
+    const user_id = localStorage.getItem('user_id');
+    if (user_id){
+      this.restAccount.getUserDetails$({id: user_id}).subscribe(user => this.user = user);
+    }
   }
 
 }

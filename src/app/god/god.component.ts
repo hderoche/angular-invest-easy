@@ -54,24 +54,14 @@ export class GodComponent implements OnInit {
   ngOnInit(): void {
     this.restAccount.getAllUsers$().subscribe((res) => {
       if (res !== undefined){
-        res.forEach(element => {
-          if (element !== undefined){
-            this.data.push(new User(element));
-          }
-        });
-        this.displayedDataUser = this.data;
+        this.displayedDataUser = res.map(element => new User(element));
       }
     });
 
     this.restAccount.getAllWallets$().subscribe((res) => {
       if (res !== undefined){
         this.danger = res.danger;
-        (res.wallets).forEach(element => {
-          if (element !== undefined){
-            this.dataWallet.push(new Wallet(element));
-          }
-        });
-        this.displayedDataWallet = this.dataWallet;
+        this.displayedDataWallet = (res.wallets).map(element => new Wallet(element));
       }
     });
 
