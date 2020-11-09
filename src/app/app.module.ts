@@ -34,6 +34,7 @@ import { LandingComponent } from './landing/landing.component';
 import { AuthInterceptor } from './auth-interceptor';
 import { LandingCardComponent } from './landing-card/landing-card.component';
 import { ShareDetailsComponent } from './share-details/share-details.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { ShareDetailsComponent } from './share-details/share-details.component';
     LandingComponent,
     LandingCardComponent,
     ShareDetailsComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
