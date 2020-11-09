@@ -1,12 +1,13 @@
-<div class="container">
+<div class="">
     <img src="../../assets/20422.jpg" alt="" class="main-img">
     <div style="text-align: center; ">
         <button mat-raised-button color="primary" routerLink="/register" class="btn-landing"  >Join us</button>
     </div>
 </div>
-<mat-grid-list cols="1">
-    <div class="img-right">
-        <mat-list class="mat-elevation-z8 sub-list" style="margin-left: 10rem;">
+
+<div class="container">
+    <div class="img-list">
+        <mat-list class="mat-elevation-z8 sub-list">
             <mat-list-item> Invest in few steps </mat-list-item>
             <mat-list-item> From your phone </mat-list-item>
             <mat-list-item> Join a large community </mat-list-item>
@@ -14,7 +15,7 @@
         <img src="../../assets/4393.jpg" alt="" class="sub-img">
     </div>
     <br>
-    <div class="img-left">
+    <div class="img-list">
         <img src="../../assets/4065113.jpg" alt="" class="sub-img">
         <mat-list class="mat-elevation-z8 sub-list">
             <mat-list-item> Learn with fun </mat-list-item>
@@ -22,10 +23,12 @@
             <mat-list-item> Find the best opportunities </mat-list-item>
         </mat-list>
     </div>
-</mat-grid-list>
+</div>
+
 <mat-grid-list cols="3" rowHeight="2:1" class="grid-list" gutterSize="2rem">
-    <mat-grid-tile *ngFor="let gridUnit of gridUnits" class="mat-elevation-z8 list-elt">
-        {{gridUnit}}
-        <!-- <app-landing-card [itemList]="gridUnit"></app-landing-card> -->
+    <mat-grid-tile *ngFor="let gridUnit of gridUnits"  >
+        <mat-list class="mat-elevation-z8" style="width: 95%;">
+            <mat-list-item *ngFor="let item of gridUnit">{{item}}</mat-list-item>
+        </mat-list>
     </mat-grid-tile>
 </mat-grid-list>

@@ -8,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class LandingComponent implements OnInit {
 
   gridUnits = [
-    ['tetoekotk', 'eirjeivorjvierv', 'oijvreiorjvie'],
-    ['tetoekotk', 'eirjeivorjvierv', 'oijvreiorjvie'],
-    ['tetoekotk', 'eirjeivorjvierv', 'oijvreiorjvie'],
-    ['tetoekotk', 'eirjeivorjvierv', 'oijvreiorjvie'],
-    ['tetoekotk', 'eirjeivorjvierv', 'oijvreiorjvie'],
-    ['tetoekotk', 'eirjeivorjvierv', 'oijvreiorjvie'],
+    ['tetoekotk', 'Easy to use', 'oijvreiorjvie'],
+    ['tetoekotk', 'Easy to use', 'oijvreiorjvie'],
+    ['tetoekotk', 'Easy to use', 'oijvreiorjvie'],
+    ['tetoekotk', 'Easy to use', 'oijvreiorjvie'],
+    ['tetoekotk', 'Easy to use', 'oijvreiorjvie'],
+    ['tetoekotk', 'Easy to use', 'oijvreiorjvie'],
   ];
 
   constructor() { }
