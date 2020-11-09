@@ -62,6 +62,7 @@ async onSubmit(): Promise<void>  {
     if (this.registerForm.invalid) {
       return;
     }
+    // need to hash the password before sending it -> no interception
     this.fullForm = jsonConcat(this.registerForm.value.formArray[0], this.registerForm.value.formArray[1]);
     console.log(this.fullForm);
     const statusCode$ = this.restAccount.postSignup$({}, {}, this.fullForm);
