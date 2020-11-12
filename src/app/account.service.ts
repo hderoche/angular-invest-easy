@@ -71,5 +71,12 @@ export class AccountService {
         return res.body;
       }));
   }
+
+  deleteUser = (params = {id: null}, headers = {}) => {
+    console.log(params.id);
+    return this.http.delete('/users/delete/' + params.id, {observe: 'response'}).pipe(map(res => {
+      return res.status;
+    }));
+  }
 }
 

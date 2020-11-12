@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AccountService } from './../account.service';
 import { Component, OnInit } from '@angular/core';
@@ -47,7 +48,7 @@ export class RegisterComponent implements OnInit {
 
 
   // tslint:disable-next-line: variable-name
-  constructor(private fb: FormBuilder, private restAccount: AccountService, private _snackbar: MatSnackBar) {}
+  constructor(private fb: FormBuilder, private restAccount: AccountService, private _snackbar: MatSnackBar, private router: Router) {}
 
   ngOnInit(): void {
   }
@@ -71,6 +72,7 @@ async onSubmit(): Promise<void>  {
       if (res) {
         // Add snackbar to tell the user he has successfully registered
         this._snackbar.open('Successfully regitered !', null, {duration: 2 * 1000});
+        this.router.navigate(['/signin']);
       }
 
     });

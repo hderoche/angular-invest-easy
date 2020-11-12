@@ -6,5 +6,6 @@
         <mat-list>
             <mat-list-item *ngFor="let info of user | keyvalue">{{info.key}} : {{info.value}}</mat-list-item>
         </mat-list>
+        <button mat-raised-button color="primary" (click)="onDelete()">Delete my account</button>
     </mat-card-content>
 </mat-card>

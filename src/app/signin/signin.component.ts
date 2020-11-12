@@ -34,7 +34,12 @@ export class SigninComponent implements OnInit {
     }
   }
 
-  constructor(private restAccount: AccountService, private fb: FormBuilder, private router: Router, private appComp: AppComponent, private snackbar: MatSnackBar ) {}
+  constructor(
+    private restAccount: AccountService,
+    private fb: FormBuilder,
+    private router: Router,
+    private appComp: AppComponent,
+    private snackbar: MatSnackBar) {}
 
   ngOnInit(): void {
   }
@@ -51,9 +56,9 @@ export class SigninComponent implements OnInit {
 
       console.log('signInStat ' + signInStatus);
       if (signInStatus) {
-        this.router.navigate(['/']);
         this.appComp.isLogged();
         this.snackbar.open('Successfully logged in!', null, {duration: 2 * 1000});
+        this.router.navigate(['/']);
       }
     });
     this.loginForm.reset();
