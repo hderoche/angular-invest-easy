@@ -1,0 +1,9 @@
+.select-nbshare{
+    display: inline-flex;
+    margin: 0 auto
+}
+
+.btn-share {
+    padding: 0.3rem 2rem;
+    margin-left: 10px;
+}

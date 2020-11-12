@@ -59,9 +59,7 @@ export class AccountService {
   }) =>
       this.http.post('/users/signup', body, { observe: 'response' }).pipe(
         map(res => {
-        console.log(res);
-        console.log(res.status);
-        return res.ok;
+        return res.status;
       }))
 
   checkToken = (params = {}, headers = {}, body = { user_id: null }) => {

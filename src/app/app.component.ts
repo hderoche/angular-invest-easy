@@ -12,28 +12,31 @@ export class AppComponent {
 
   token = localStorage.length;
   isConnected: boolean;
+  shareCart = [];
 
 
   constructor(private restAccount: AccountService) {}
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit(): void {
-    this.isLogged();
+    this.isConnected = this.isLogged();
   }
 
-  isLogged(): boolean {
+  public isLogged(): boolean {
+    console.log('connecting ...');
+    let conn: boolean;
     try {
       if (localStorage.getItem('token')) {
         const response$ = this.restAccount.checkToken({}, {}, {user_id: localStorage.getItem('user_id')});
         response$.subscribe(res => {
           if (res[Object.keys(res).find(key => key === 'token')] === localStorage.getItem('token')) {
             console.log('result of http post : ' + true);
-            this.isConnected = true;
+            conn = true;
           } else {
-            this.isConnected = false;
+            conn = false;
           }
         });
-        return this.isConnected;
+        return conn;
       }
     } catch {
       console.log('err in the isLogged function');

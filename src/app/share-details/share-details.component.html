@@ -10,6 +10,15 @@
                     {{info.key}} : {{info.value}}
                 </mat-list-item>
             </mat-list>
+            <div *ngIf="true" class="select-nbshare">
+                <mat-form-field>
+                    <mat-label>Number of Share</mat-label>
+                    <input matInput placeholder="Enter a number" #nbShare>
+                </mat-form-field>
+                <button mat-raised-button (click)="addCart(nbShare.value, currentShare)" color="primary" class="btn-share">
+                    <mat-icon>add_shopping_cart</mat-icon>
+                </button>
+            </div>
         </mat-card-content>
     </mat-card>
 </div>

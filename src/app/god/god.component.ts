@@ -40,7 +40,7 @@ export class GodComponent implements OnInit {
 
   data: User[] = [];
   displayedDataUser: User[] = [];
-  displayedColumnsUser: string[] = ['name', 'firstname', 'email', 'password', 'telephone', 'adress', 'nationnality', 'birthDate'];
+  displayedColumnsUser: string[] = ['name', 'firstname', 'email', 'password', 'telephone', 'adress', 'nationality', 'birthDate'];
   columnsToDisplayUser: string[] = this.displayedColumnsUser.slice();
 
   danger: string;

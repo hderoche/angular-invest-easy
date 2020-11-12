@@ -16,6 +16,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatListModule} from '@angular/material/list';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,6 +36,8 @@ import { AuthInterceptor } from './auth-interceptor';
 import { LandingCardComponent } from './landing-card/landing-card.component';
 import { ShareDetailsComponent } from './share-details/share-details.component';
 import { FooterComponent } from './footer/footer.component';
+import { PaymentComponent } from './payment/payment.component';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -53,6 +56,8 @@ import { FooterComponent } from './footer/footer.component';
     LandingCardComponent,
     ShareDetailsComponent,
     FooterComponent,
+    PaymentComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +80,8 @@ import { FooterComponent } from './footer/footer.component';
     MatSelectModule,
     MatMenuModule,
     MatSnackBarModule,
-    MatListModule
+    MatListModule,
+    MatSidenavModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

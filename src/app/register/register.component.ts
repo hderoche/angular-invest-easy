@@ -58,29 +58,25 @@ export class RegisterComponent implements OnInit {
   get formArray(): AbstractControl | null { return this.registerForm.get('formArray'); }
 
 
-async onSubmit(): Promise<void>  {
-  try {
-    if (this.registerForm.invalid) {
-      return;
-    }
-    // need to hash the password before sending it -> no interception
-    this.fullForm = jsonConcat(this.registerForm.value.formArray[0], this.registerForm.value.formArray[1]);
-    console.log(this.fullForm);
-    const statusCode$ = this.restAccount.postSignup$({}, {}, this.fullForm);
-    statusCode$.subscribe(res => {
-      console.log({statusCode: res});
-      if (res) {
-        // Add snackbar to tell the user he has successfully registered
-        this._snackbar.open('Successfully regitered !', null, {duration: 2 * 1000});
-        this.router.navigate(['/signin']);
+  onSubmit(): Promise<void>  {
+    try {
+      if (this.registerForm.invalid) {
+        return;
       }
-
-    });
+      // need to hash the password before sending it -> no interception
+      this.fullForm = jsonConcat(this.registerForm.value.formArray[0], this.registerForm.value.formArray[1]);
+      this.restAccount.postSignup$({}, {}, this.fullForm).subscribe(res => {
+        if (res === 201) {
+          // Add snackbar to tell the user he has successfully registered
+          this._snackbar.open('Successfully regitered !', null, {duration: 2 * 1000});
+          this.router.navigate(['/signin']);
+        }
+      });
+    }
+    catch {
+      console.log('Error in the async/await function');
+    }
   }
-  catch {
-    console.log('Error in the async/await function');
-  }
-}
 
 }
 

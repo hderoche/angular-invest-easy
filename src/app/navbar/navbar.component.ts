@@ -1,3 +1,4 @@
+import { AppComponent } from './../app.component';
 import { Component, Input, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,7 +15,7 @@ export class NavbarComponent implements OnInit {
 
 
   // tslint:disable-next-line: variable-name
-  constructor(private _snackBar: MatSnackBar) {
+  constructor(private _snackBar: MatSnackBar, private appCom: AppComponent) {
   }
   ngOnInit(): void {
   }
@@ -27,6 +28,7 @@ export class NavbarComponent implements OnInit {
       duration: 2 * 1000
     });
     this.connected = false;
+    this.appCom.isConnected = false;
   }
 
 }

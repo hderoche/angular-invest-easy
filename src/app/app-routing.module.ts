@@ -1,3 +1,4 @@
+import { CartComponent } from './cart/cart.component';
 import { ShareDetailsComponent } from './share-details/share-details.component';
 import { LandingComponent } from './landing/landing.component';
 import { WalletComponent } from './wallet/wallet.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'shares', component: SharesComponent },
   { path: 'wallet', component: WalletComponent },
+  { path: 'cart', component: CartComponent },
   { path: '', component: LandingComponent },
   { path: 'shares/:ticker', component: ShareDetailsComponent},
 ];
