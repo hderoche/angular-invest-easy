@@ -1,6 +1,8 @@
 <p class="mat-body">Some cool stuff about the shares
     <br>
     And some disclaimers about the risks associated with stock markets
+    <br>
+    <button mat-raised-button color="primary" routerLink="/cart" style=" margin: 0 auto;">See cart</button>
 </p>
 
 
@@ -22,10 +24,10 @@
                   </div> 
                   <ng-template #elseBlock>
                       <div *ngIf="element.isUp == true; else notTrue">
-                        <mat-icon>trending_up</mat-icon>
+                        <mat-icon [ngStyle]="{'color':'green'}">trending_up</mat-icon>
                       </div>
                   <ng-template #notTrue>
-                      <mat-icon>trending_down</mat-icon>
+                      <mat-icon [ngStyle]="{'color':'red'}">trending_down</mat-icon>
                   </ng-template>
                   </ng-template>
               </td>

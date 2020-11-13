@@ -1,5 +1,5 @@
 
-import { Share, ShareRecord } from './product';
+import { Share, ShareAmount, ShareRecord } from './product';
 
 export interface UserRecord {
     name: string;
@@ -12,9 +12,14 @@ export interface UserRecord {
     nationality: string;
 }
 
+export interface CredentialsRecord {
+    token: string;
+    userId: string;
+}
+
 export interface WalletRecord {
     user_id: string;
-    portefolio: Share[];
+    portefolio: ShareAmount[];
 }
 export interface WalletListRecord{
     danger: string;
@@ -25,22 +30,26 @@ export interface WalletListRecord{
 export class Wallet implements WalletRecord {
     // tslint:disable-next-line: variable-name
     user_id: string = null;
-    portefolio: Share[] = null;
+    portefolio: ShareAmount[] = null;
     constructor(input: any = {}) {
         // Prends les attributs de la classe et les map avec les champs du Json correspondant
         // Object.keys(this).forEach(p => this[p] = (input as any)[p]);
         Object.keys(this).map(p =>  this[p] = (input as any)[p]);
         // Si le tableau de transaction est de type tableau et de longueur > 0
         // Appelle chaque constructeur de la classe Transaction pour faire la meme chose (recursivite)
-        this.portefolio = [];
-        if (toString.call(input.portefolio) === '[object Array]' && input.portefolio.length > 0) {
-            this.portefolio = input.portefolio.map((e: ShareRecord) => (new Share(e)));
-        }
     }
 }
 export class WalletList implements WalletListRecord {
     danger: string = null;
     wallets: Wallet[] = null;
+}
+
+export class Credentials implements CredentialsRecord {
+    token: string = null;
+    userId: string = null;
+    constructor(input: any = {}) {
+        Object.keys(this).map(p =>  this[p] = (input as any)[p]);
+    }
 }
 
 export class User implements UserRecord {

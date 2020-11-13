@@ -1,3 +1,4 @@
+import { AuthentificationService } from './../authentification.service';
 import { AppComponent } from './../app.component';
 import { AccountService } from './../account.service';
 import { Component, Input, OnInit } from '@angular/core';
@@ -36,10 +37,17 @@ export class SigninComponent implements OnInit {
 
   constructor(
     private restAccount: AccountService,
+    private authService: AuthentificationService,
     private fb: FormBuilder,
     private router: Router,
     private appComp: AppComponent,
-    private snackbar: MatSnackBar) {}
+    private snackbar: MatSnackBar,
+    private authenticationService: AuthentificationService
+    ) {
+      if (this.authenticationService.currentUserValue) {
+        this.router.navigate(['/']);
+    }
+    }
 
   ngOnInit(): void {
   }
@@ -51,14 +59,14 @@ export class SigninComponent implements OnInit {
       return;
     }
     console.log(this.loginForm.value);
-    const signInStatus$ = this.restAccount.postSignin$({}, {}, this.loginForm.value);
+    const signInStatus$ = this.authService.login$({}, {}, this.loginForm.value);
     signInStatus$.subscribe(signInStatus => {
 
       console.log('signInStat ' + signInStatus);
       if (signInStatus) {
-        this.appComp.isLogged();
         this.snackbar.open('Successfully logged in!', null, {duration: 2 * 1000});
         this.router.navigate(['/']);
+        
       }
     });
     this.loginForm.reset();

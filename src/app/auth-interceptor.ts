@@ -11,9 +11,8 @@ export class AuthInterceptor implements HttpInterceptor {
     // Logged in. Add Bearer token.
     let h: HttpHeaders = request.headers;
     const token = localStorage.getItem('token');
-    h = h.append('Authorization', 'Bearer ' + token);
     h = h.append('Content-Type', 'application/json');
-    return next.handle(request.clone({ headers: h, url: BASE_URL + request.url }));
+    return next.handle(request.clone({ setHeaders: { Authorization: `Bearer ${token}` }, url: BASE_URL + request.url }));
     }
     else {
         return next.handle(request.clone({url: BASE_URL + request.url}));

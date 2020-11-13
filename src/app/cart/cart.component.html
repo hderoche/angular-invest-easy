@@ -1,4 +1,4 @@
-<div *ngIf="isConnected; else notConnected">
+<div *ngIf="true; else notConnected">
     <div *ngIf="shareCart.length > 0; else elseBlock">
         <div *ngFor="let share of shareCart">
             <mat-card style="width: 70%; margin: 10px auto" class="mat-elevation-z8">
@@ -10,9 +10,17 @@
                     <br>
                     Amount : {{share.share.lastPrice*share.count | currency}}
                 </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" (click)="add(share)"><mat-icon>add_shopping_cart</mat-icon></button>
+                    <button mat-raised-button color="primary" (click)="remove(share)"><mat-icon>remove_shopping_cart</mat-icon></button>
+                  </mat-card-actions>
             </mat-card>
         </div>
-        <h1 style="text-align: center;">{{total}}</h1>
+        <div style="text-align: center;">
+            <h1 >{{total}}</h1>
+            <button mat-raised-button color="primary" (click)="onPay()"><mat-icon>payment</mat-icon> Checkout</button>
+            <button mat-raised-button color="primary" routerLink="/shares" style=" margin: 0 auto;">Want more ?</button>
+        </div>
     </div>
     <ng-template #elseBlock >
         <div style="text-align: center;">

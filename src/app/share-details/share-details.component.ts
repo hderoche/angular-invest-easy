@@ -6,6 +6,7 @@ import { Share } from '../product';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, tap } from 'rxjs/operators';
 import { Chart } from 'chart.js';
+import { AuthentificationService } from '../authentification.service';
 
 
 
@@ -25,8 +26,12 @@ export class ShareDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private appComp: AppComponent,
-    private snackbar: MatSnackBar) {
-  }
+    private snackbar: MatSnackBar,
+    private authentificationService: AuthentificationService) {
+      if (this.authentificationService.currentUserValue) {
+        this.isConnected = true;
+      }
+    }
 
   ngOnInit(): void {
     this.isConnected = this.appComp.isConnected;
@@ -42,18 +47,20 @@ export class ShareDetailsComponent implements OnInit {
   }
 
   addCart(value: string, currentShare: Share): void {
+    console.log(this.appComp.shareCart.length);
     if (this.appComp.shareCart.length === 0){
       this.appComp.shareCart.push({share : currentShare, count: parseInt(value, 10)});
-    } else {
-      this.appComp.shareCart.forEach(sh => {
-        if (currentShare.ticker === sh.share.ticker) {
-          sh.count = parseInt(sh.count, 10) + parseInt(value, 10);
-        }
-        else {
-          this.appComp.shareCart.push({share : currentShare, count: value});
-        }
-      });
+      this.snackbar.open( 'Successfully added to cart!', null, {duration: 2 * 1000});
+      return;
     }
+    this.appComp.shareCart.forEach(sh => {
+      if (currentShare.ticker === sh.share.ticker) {
+        sh.count = parseInt(sh.count, 10) + parseInt(value, 10);
+        this.snackbar.open( 'Successfully added to cart!', null, {duration: 2 * 1000});
+        return;
+      }
+    });
+    this.appComp.shareCart.push({share : currentShare, count: parseInt(value, 10)});
     this.snackbar.open( 'Successfully added to cart!', null, {duration: 2 * 1000});
   }
 

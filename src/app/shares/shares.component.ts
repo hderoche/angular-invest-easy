@@ -14,7 +14,7 @@ export class SharesComponent implements OnInit {
   constructor(private restProduct: ProductService, private router: Router) {}
 
   displayedDataShare: Share[] = [];
-  displayedColumnsShare: string[] = ['name', 'ticker', 'description', 'lastPrice', 'isUp', 'capitalisation', 'volume', 'per'];
+  displayedColumnsShare: string[] = ['isUp', 'name', 'ticker', 'description', 'lastPrice', 'capitalisation', 'volume', 'per'];
   columnsToDisplayShare: string[] = this.displayedColumnsShare.slice();
   listTags: string[] = [];
   listTagsFiltered: string[] = [];

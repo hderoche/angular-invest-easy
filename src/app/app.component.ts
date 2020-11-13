@@ -1,3 +1,4 @@
+import { AuthentificationService } from './authentification.service';
 import { AccountService } from './account.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,37 +12,21 @@ export class AppComponent {
   title = 'angular-invest-easy';
 
   token = localStorage.length;
-  isConnected: boolean;
+  public isConnected: boolean;
   shareCart = [];
 
 
-  constructor(private restAccount: AccountService) {}
+  constructor(
+    private restAccount: AccountService,
+    private authentificationService: AuthentificationService) {
+      if (this.authentificationService.currentUserValue) {
+        this.isConnected = true;
+      }
+    }
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit(): void {
-    this.isConnected = this.isLogged();
   }
 
-  public isLogged(): boolean {
-    console.log('connecting ...');
-    let conn: boolean;
-    try {
-      if (localStorage.getItem('token')) {
-        const response$ = this.restAccount.checkToken({}, {}, {user_id: localStorage.getItem('user_id')});
-        response$.subscribe(res => {
-          if (res[Object.keys(res).find(key => key === 'token')] === localStorage.getItem('token')) {
-            console.log('result of http post : ' + true);
-            conn = true;
-          } else {
-            conn = false;
-          }
-        });
-        return conn;
-      }
-    } catch {
-      console.log('err in the isLogged function');
-      return false;
-    }
-  }
 
 }

@@ -1,4 +1,4 @@
-import { UserRecord, User, Wallet, WalletRecord, WalletListRecord } from './account';
+import { UserRecord, User, Wallet, WalletRecord, WalletListRecord, Credentials } from './account';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
@@ -26,26 +26,6 @@ export class AccountService {
   getAllWallets$ = (params = {}, headers = {}) =>
     this.http.get<WalletListRecord>('/wallets/')
 
-  postSignin$ = (params = {}, headers = {}, body = { email: null, password: null }) =>
-    this.http.post('/users/login', body, { observe: 'response' }).pipe(
-      tap(() => localStorage.clear()),
-      tap(res => console.log('/users/login returns', res)),
-      map(res => {
-
-        // tslint:disable-next-line: forin
-        for (const key in res.body) {
-          console.log(res.body[key]);
-          this.infos.push(res.body[key]);
-        }
-        localStorage.setItem('user_id', this.infos[0]);
-        localStorage.setItem('token', this.infos[1]);
-        console.log('resOk ' + res.ok);
-        let signInStatus = false;
-        signInStatus = res.ok;
-        console.log('post : ' + signInStatus);
-        return signInStatus;
-      }))
-
 
   postSignup$ = (params = {}, headers = {}, body = {
     name: null,
@@ -62,7 +42,7 @@ export class AccountService {
         return res.status;
       }))
 
-  checkToken = (params = {}, headers = {}, body = { user_id: null }) => {
+  checkToken$ = (params = {}, headers = {}, body = { user_id: null }) => {
     return this.http.post('/users/token', body, { observe: 'response' }).pipe(
       tap(_ => console.log('/users/token request')),
       map(res => {
@@ -70,10 +50,15 @@ export class AccountService {
       }));
   }
 
-  deleteUser = (params = {id: null}, headers = {}) => {
-    console.log(params.id);
+  deleteUser$ = (params = {id: null}, headers = {}) => {
     return this.http.delete('/users/delete/' + params.id, {observe: 'response'}).pipe(map(res => {
       return res.status;
+    }));
+  }
+
+  createWallet$ = (params = {id: null}, headers = {}) => {
+    return this.http.post('/wallets/create', {user_id: params.id}).pipe(map(res => {
+      return new Wallet(res);
     }));
   }
 }
