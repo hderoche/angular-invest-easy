@@ -66,7 +66,7 @@ export class SigninComponent implements OnInit {
       if (signInStatus) {
         this.snackbar.open('Successfully logged in!', null, {duration: 2 * 1000});
         this.router.navigate(['/']);
-        
+
       }
     });
     this.loginForm.reset();

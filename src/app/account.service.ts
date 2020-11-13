@@ -17,11 +17,12 @@ export class AccountService {
       .pipe(map(p => new User(p)))
 
   getWallet$ = (params = { user_id: null }, headers = {}) =>
-    this.http.get<WalletRecord>('/wallet/' + params.user_id)
+    this.http.get<WalletRecord>('/wallets/' + params.user_id)
       .pipe(map(p => new Wallet(p)))
 
-  getAllUsers$ = (params = {}, headers = {}) =>
-    this.http.get<UserRecord[]>('/users/')
+  getAllUsers$ = (params = {}, headers = {}) => {
+    return this.http.get<User[]>('/users/');
+  }
 
   getAllWallets$ = (params = {}, headers = {}) =>
     this.http.get<WalletListRecord>('/wallets/')
@@ -58,6 +59,12 @@ export class AccountService {
 
   createWallet$ = (params = {id: null}, headers = {}) => {
     return this.http.post('/wallets/create', {user_id: params.id}).pipe(map(res => {
+      return new Wallet(res);
+    }));
+  }
+
+  addShares$ = (params = {}, headers = {}, body = {}) => {
+    return this.http.put<Wallet>('/wallets/addshares', body).pipe(map(res => {
       return new Wallet(res);
     }));
   }

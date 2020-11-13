@@ -1,1 +1,14 @@
-<p>wallet works!</p>
+<p>Need to change the way I get the shares from the wallet.</p>
+<div *ngIf="wallet" style="width: 70%; margin: 3rem auto;" class="mat-elevation-z8">
+    <mat-card>
+        <mat-card-title style="text-align: center;">Your Wallet</mat-card-title>
+        <mat-card-content>
+            <div *ngFor="let share of wallet.portefolio" style="margin-left: 4rem;">
+                Share Id : {{share.name}}
+                <br>
+                Amount : {{share.count}}
+                <br>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

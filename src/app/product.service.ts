@@ -12,7 +12,10 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getAllShares$ = (params = {}, headers = {}) =>
-  this.http.get<ShareRecord[]>('/shares/')
+  this.http.get<Share[]>('/shares/').pipe(map(shares => {
+    shares.map(share => new Share(share));
+    return shares;
+  }))
 
   getOneShare$ = (params = {ticker: null}, headers = {}) =>
   this.http.get<Share>('/shares/' + params.ticker)

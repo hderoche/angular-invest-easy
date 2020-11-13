@@ -1,3 +1,4 @@
+import { StatsComponent } from './stats/stats.component';
 import { CartComponent } from './cart/cart.component';
 import { ShareDetailsComponent } from './share-details/share-details.component';
 import { LandingComponent } from './landing/landing.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'shares', component: SharesComponent },
   { path: 'wallet', component: WalletComponent },
   { path: 'cart', component: CartComponent },
+  { path: 'stats', component: StatsComponent },
   { path: '', component: LandingComponent },
   { path: 'shares/:ticker', component: ShareDetailsComponent},
 ];

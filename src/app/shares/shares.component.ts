@@ -24,7 +24,7 @@ export class SharesComponent implements OnInit {
 
   ngOnInit(): void {
     this.restProduct.getAllShares$().subscribe((res) => {
-      this.displayedDataShare = res.map(element => new Share(element));
+      this.displayedDataShare = res;
       this.displayedDataShare.forEach(element => {
         element.tags.forEach(elt => {
           this.listTags.push(elt);

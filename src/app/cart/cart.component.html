@@ -35,3 +35,14 @@
         <button mat-raised-button color="primary" routerLink="/signin" style=" margin: 0 auto;">Identify yourself</button>
     </div>
 </ng-template>
+
+<div *ngIf="walletUpdated" style="width: 70%; margin: 0 auto;">
+    <mat-card>
+        <mat-card-title style="text-align: center;">Your Wallet</mat-card-title>
+        <mat-card-content>
+            <pre *ngFor="let share of walletUpdated.portefolio">
+                {{share | json}}
+            </pre>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -8,10 +8,11 @@ export interface ShareRecord {
     tags: Array<string>;
     volume: number;
     per: number;
+    _id: string;
 }
 
 export interface ShareAmountRecord {
-    share: Share;
+    share_id: string;
     count: number;
 }
 
@@ -26,6 +27,8 @@ export class Share implements ShareRecord {
     tags: Array<string> = null;
     volume: number = null;
     per: number = null;
+    // tslint:disable-next-line: variable-name
+    _id: string = null;
 
     constructor(input: any = {}) {
         // Prends les attributs de la classe et les map avec les champs du Json correspondant
@@ -36,8 +39,10 @@ export class Share implements ShareRecord {
 }
 
 export class ShareAmount implements ShareAmountRecord {
-    share: Share;
-    count: number;
+    // tslint:disable-next-line: variable-name
+    share_id: string = null;
+    count: number = null;
+    name: string;
 
     constructor(input: any = {}) {
         // Prends les attributs de la classe et les map avec les champs du Json correspondant
