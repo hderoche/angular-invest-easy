@@ -14,7 +14,7 @@ export class AuthentificationService {
 
   constructor(private http: HttpClient) {
     if (localStorage.getItem('token') === null || localStorage.getItem('userId') === undefined) {
-      this.currentUserSubject.next(null);
+      this.currentUserSubject = new BehaviorSubject<Credentials>(null);
     } else {
       this.currentUserSubject = new BehaviorSubject<Credentials>(
         new Credentials({token: localStorage.getItem('token'), user_id: localStorage.getItem('userId')}));
@@ -23,6 +23,7 @@ export class AuthentificationService {
   }
 
   public get currentUserValue(): Credentials {
+    console.log(this.currentUserSubject.value);
     return this.currentUserSubject.value;
   }
 

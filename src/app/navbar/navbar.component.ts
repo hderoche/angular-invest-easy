@@ -12,7 +12,7 @@ import { AuthentificationService } from '../authentification.service';
 export class NavbarComponent implements OnInit {
 
 
-  connected: boolean;
+  connected$: any;
 
 
   constructor(
@@ -22,9 +22,7 @@ export class NavbarComponent implements OnInit {
     ) {
     }
     ngOnInit(): void {
-      if (this.authenticationService.currentUserValue) {
-        this.connected = true;
-      }
+      this.connected$ = this.authenticationService.currentUser;
     }
 
     onLogout(): void {
@@ -33,7 +31,7 @@ export class NavbarComponent implements OnInit {
         duration: 2 * 1000
       });
       this.authenticationService.logout$();
-      this.connected = false;
+      this.connected$ = this.authenticationService.currentUser;
   }
 
 }

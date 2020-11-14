@@ -42,9 +42,8 @@ export class SigninComponent implements OnInit {
     private router: Router,
     private appComp: AppComponent,
     private snackbar: MatSnackBar,
-    private authenticationService: AuthentificationService
     ) {
-      if (this.authenticationService.currentUserValue.token !== null) {
+      if (this.authService.currentUserValue !== null) {
         this.router.navigate(['/']);
     }
     }
