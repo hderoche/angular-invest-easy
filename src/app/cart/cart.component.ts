@@ -48,7 +48,6 @@ export class CartComponent implements OnInit {
   add(share): void {
     share.count = share.count + 1;
     this.total = this.calculateTotal(this.shareCart);
-
   }
 
   remove(share): void {

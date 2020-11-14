@@ -7,7 +7,16 @@
         <mat-card-content>
             <mat-list >
                 <mat-list-item *ngFor="let info of currentShare | keyvalue" >
-                    {{info.key}} : {{info.value}}
+                    <div *ngIf="info.key !== 'tags';else tags">
+                        {{info.key}} : {{info.value}}
+                    </div>
+                    <ng-template #tags>
+                        <mat-chip-list *ngFor="let tag of info.value">
+                            <mat-chip color="primary">{{tag}}</mat-chip>
+                        </mat-chip-list>
+                        
+                        
+                    </ng-template>
                 </mat-list-item>
             </mat-list>
             <div *ngIf="true" class="select-nbshare">
