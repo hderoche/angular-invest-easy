@@ -20,7 +20,7 @@ export class WalletComponent implements OnInit {
     private restAccount: AccountService,
     private restProduct: ProductService
     ) {
-      if (this.authenticationService.currentUserValue) {
+      if (this.authenticationService.currentUserValue !== null) {
         this.isConnected = true;
     }else{
       this.router.navigate(['/']);

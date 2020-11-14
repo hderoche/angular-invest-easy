@@ -44,7 +44,7 @@ export class SigninComponent implements OnInit {
     private snackbar: MatSnackBar,
     private authenticationService: AuthentificationService
     ) {
-      if (this.authenticationService.currentUserValue) {
+      if (this.authenticationService.currentUserValue.token !== null) {
         this.router.navigate(['/']);
     }
     }
@@ -59,14 +59,10 @@ export class SigninComponent implements OnInit {
       return;
     }
     console.log(this.loginForm.value);
-    const signInStatus$ = this.authService.login$({}, {}, this.loginForm.value);
-    signInStatus$.subscribe(signInStatus => {
-
-      console.log('signInStat ' + signInStatus);
-      if (signInStatus) {
+    this.authService.login$({}, {}, this.loginForm.value).subscribe(res => {
+      if (res) {
         this.snackbar.open('Successfully logged in!', null, {duration: 2 * 1000});
         this.router.navigate(['/']);
-
       }
     });
     this.loginForm.reset();

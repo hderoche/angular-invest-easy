@@ -13,10 +13,13 @@ export class AuthentificationService {
   public currentUser: Observable<Credentials>;
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<Credentials>(
-      new Credentials({token: localStorage.getItem('token'), user_id: localStorage.getItem('userId')}));
+    if (localStorage.getItem('token') === null || localStorage.getItem('userId') === undefined) {
+      this.currentUserSubject.next(null);
+    } else {
+      this.currentUserSubject = new BehaviorSubject<Credentials>(
+        new Credentials({token: localStorage.getItem('token'), user_id: localStorage.getItem('userId')}));
+    }
     this.currentUser = this.currentUserSubject.asObservable();
-
   }
 
   public get currentUserValue(): Credentials {

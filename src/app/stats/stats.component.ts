@@ -12,7 +12,6 @@ export class StatsComponent implements OnInit {
 
   ngOnInit(): void {
     const ctx = document.getElementById('canvas') as HTMLCanvasElement ;
-    console.log(ctx);
     const canvas = ctx.getContext('2d');
     this.chart = new Chart(canvas, {
       type: 'doughnut',
